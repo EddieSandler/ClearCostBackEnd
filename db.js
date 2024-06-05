@@ -1,4 +1,5 @@
 const { Client } = require("pg");
+require('dotenv').config();
 
 // Assuming 'medical_pricing' is indeed your database name
 let dbName = "medical_pricing";
