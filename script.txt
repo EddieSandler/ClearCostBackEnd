@@ -3,4 +3,4 @@ gcloud run deploy backend-service \
   --platform managed \
   --region us-central1 \
   --allow-unauthenticated \
-  --set-env-vars INSTANCE_CONNECTION_NAME=clearcosthealth-425417:us-central1:clear-cost-db-1,DB_NAME=medical_pricing,DB_USER=esandler,DB_PASSWORD=Bruce!!20
+  --set-env-vars INSTANCE_CONNECTION_NAME="clearcosthealth-425417:us-central1:clear-cost-db-1",DB_NAME="medical_pricing",DB_USER="esandler",DB_PASSWORD="Bruce1120"

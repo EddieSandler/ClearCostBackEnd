@@ -1,6 +1,6 @@
 FROM node:14
 
-WORKDIR /app
+WORKDIR /usr/src/app
 
 COPY package*.json ./
 
@@ -8,6 +8,8 @@ RUN npm install
 
 COPY . .
 
+COPY .env .
+
 EXPOSE 8080
 
-CMD ["npm", "start"]
+CMD ["node", "app.js"]

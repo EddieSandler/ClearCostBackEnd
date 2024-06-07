@@ -49,6 +49,7 @@ router.post('/login', async (req, res) => {
 
 //endpoint for user registration. User has option to register as admin
 router.post('/register', async (req, res) => {
+
   const { username, password, insuranceCompany, copayment, coinsurance, deductible,isAdmin } = req.body;
   try {
     const password_hash = await bcrypt.hash(password, 10); // Hash the password
@@ -60,7 +61,7 @@ router.post('/register', async (req, res) => {
     res.status(200).send(result.rows[0]);
   } catch (err) {
     console.error('Registration error:', err);
-    res.status(500).send('Error registering user');
+    res.status(500).send('Error registering user- but you are hitting the endpoint');
   }
 });
 
