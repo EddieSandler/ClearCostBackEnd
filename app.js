@@ -6,7 +6,9 @@ const routes = require('./routes/routes.js');  // Adjust the path as necessary
 
 // Configure CORS
 const corsOptions = {
-  origin: 'https://frontend-service-4snlfkepaq-uc.a.run.app',  // Your frontend URL
+  origin: 'https://frontend-service-4snlfkepaq-uc.a.run.app', // Replace with your front-end domain
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
   optionsSuccessStatus: 200
 };
 
