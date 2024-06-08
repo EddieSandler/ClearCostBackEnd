@@ -32,11 +32,11 @@ router.post('/login', async (req, res) => {
     const token = jwt.sign({
       id: user.id,
       username: user.username,
-      insuranceCompany: user.insurance_company,
+      insurance_company: user.insurance_company,
       copayment: user.copayment,
       coinsurance: user.coinsurance,
       deductible: user.deductible,
-      isAdmin: user.isAdmin
+      isadmin: user.isadmin
     }, SECRET_KEY, { expiresIn: '1h' });
 
     console.log('login successful, token:', token);
@@ -50,12 +50,12 @@ router.post('/login', async (req, res) => {
 //endpoint for user registration. User has option to register as admin
 router.post('/register', async (req, res) => {
 
-  const { username, password, insuranceCompany, copayment, coinsurance, deductible,isAdmin } = req.body;
+  const { username, password, insurance_company, copayment, coinsurance, deductible, isadmin } = req.body;
   try {
     const password_hash = await bcrypt.hash(password, 10); // Hash the password
     const result = await db.query(
-      'INSERT INTO users (username, password_hash, insurance_company, copayment, coinsurance, deductible, "isAdmin") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING *',
-      [username, password_hash, insuranceCompany, copayment, coinsurance, deductible, isAdmin ]
+      'INSERT INTO users (username, password_hash, insurance_company, copayment, coinsurance, deductible, "isadmin") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING *',
+      [username, password_hash, insurance_company, copayment, coinsurance, deductible, isadmin ]
     );
 
     res.status(200).send(result.rows[0]);
@@ -67,8 +67,6 @@ router.post('/register', async (req, res) => {
 
 // Apply authenticateToken middleware to all routes below this line
 router.use(authenticateToken);
-
-
 
 
 //endpoint to compare the price of a medical procedure across medical facilities
